@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <img src="{{ object.cover.url }}" class="img-fluid">
+    </div>
+
+    <div class="col-md-7">
+        <h2>{{ object.title }}</h2>
+        <h5 class="text-muted">{{ object.author }}</h5>
+        <p class="mt-3">{{ object.description }}</p>
+
+        <br>
+
+       {% if user.is_authenticated %}
+           <a href="{% url 'book_update' object.pk %}" class="btn btn-warning">Редактировать</a>
+           <a href="{% url 'book_delete' object.pk %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
